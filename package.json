@@ -1,0 +1,18 @@
+{
+  "name": "macho",
+  "version": "0.1.0",
+  "description": "Server for RaspberryPi controlled engine room alarms",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run": "node server.js"
+  },
+  "author": "Robert Aarts, AboaMare Ltd.",
+  "license": "Apache",
+  "dependencies": {
+    "@koa/router": "^10.0.0",
+    "koa": "^2.13.1",
+    "koa-static": "^5.0.0",
+    "onoff": "^6.0.1"
+  }
+}
