@@ -17,7 +17,7 @@ module.exports = {
       key  : '/Users/robaar/.ssh/ab_rsa',
       user : 'pi',
       host : '192.168.43.27',
-      ref  : 'origin/master',
+      ref  : 'origin/main',
       repo : 'https://github.com/aboamare/macho.git',
       path : '/home/pi/Macho',
       'pre-deploy-local': '',
