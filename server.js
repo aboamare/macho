@@ -32,6 +32,8 @@ function states () {
   }, {})
 }
 
+const serve =  require('koa-static')('./app/dist')
+
 router
   .get('/subscribe', async (ctx, next) => {
     if (ctx.ws) {
@@ -93,9 +95,10 @@ router
     }
   })
 
+  .get('/:p*', serve)
+
 service
   .use(Websockets())
   .use(router.routes())
-  .use(require('koa-static')('./app/dist'))
 
 service.listen(process.env.HTTP_PORT || 8080)
