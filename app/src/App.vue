@@ -24,7 +24,8 @@ export default {
     }
   },
   created () {
-    const ws = new WebSocket('ws://localhost:8080/subscribe')
+    const url = window.location
+    const ws = new WebSocket(`ws://${url.host}:${url.poort}/subscribe`)
     ws.onmessage = ev => {
       try {
         const changes = JSON.parse(ev.data)
