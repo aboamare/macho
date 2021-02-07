@@ -67,29 +67,29 @@ router
 
   .get('/alarms', (ctx, next) => {
     // return state of the alarms
-    ctx.body = alarms.reduce((map, name, idx) => {
-      map[name] = Leds[idx].state
+    ctx.body = alarms.reduce((map, alarm, idx) => {
+      map[alarm.label] = alarm.state
       return map
     }, {})
   })
 
-  .put('/:signal', async (ctx, next) => {
-    const signal = ctx.params.signal
-    const idx = alarms.findIndex(name => name === signal)
-    if (idx >= 0) {
-      await Leds[idx].switchOn()
-      ctx.body = {[signal]: Leds[idx].state}
+  .put('/:alarm', async (ctx, next) => {
+    const label = ctx.params.alarm
+    const alarm = alarms.find(alarm => alarm.label === label)
+    if (alarm) {
+      await alarm.switchOn()
+      ctx.body = {[label]: alarm.state}
     } else {
       ctx.status = 404
     }
   })
 
-  .del('/:signal', async (ctx, next) => {
-    const signal = ctx.params.signal
-    const idx = alarms.findIndex(name => name === signal)
-    if (idx >= 0) {
-      await Leds[idx].switchOff()
-      ctx.body = {[signal]: Leds[idx].state}
+  .del('/:alarm', async (ctx, next) => {
+    const label = ctx.params.alarm
+    const alarm = alarms.find(alarm => alarm.label === label)
+    if (alarm) {
+      await alarm.switchOff()
+      ctx.body = {[label]: alarm.state}
     } else {
       ctx.status = 404
     }
