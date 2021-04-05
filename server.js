@@ -4,7 +4,7 @@ const Websockets = require('koa-easy-ws')
 
 const { Doors } = require('./lib/doors')
 const { Leds } = require('./lib/leds')
-const alarms = Leds(['general', 'co2', 'fire', 'engine', 'telegraph', 'bridge', 'watch'])
+const alarms = Leds(['general', 'co2', 'fire', 'engine', 'bridge', 'telegraph', 'watch'])
 const doors = Doors(['ECR', 'ER'])
 
 const service = new Koa()
